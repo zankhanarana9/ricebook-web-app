@@ -14,7 +14,11 @@ const Login = function() {
                         <div className="form-group row">
                             <div className="col-sm-10">
                                 <div className="mb-3">
-                                    <label htmlFor="loginUsername" className="form-label">User Name (Email):</label>
+                                    <label htmlFor="loginUsername" 
+                                        className="form-label text-left"
+                                        style={{textAlign:"left"}}>
+                                            User Name (Email):
+                                    </label>
                                     <input 
                                         type="email" 
                                         className="form-control" 
