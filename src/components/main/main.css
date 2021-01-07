@@ -1,0 +1,13 @@
+/* .profileImage {
+    width: 250px;
+    height: 100%;
+    content:url("../images/profile.jpg")
+} */
+
+img {
+    content:url("../../static/images/1.jpg");
+}
+
+nav {
+    background-color: #3240a8;
+}
