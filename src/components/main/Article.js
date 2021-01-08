@@ -4,7 +4,7 @@ const Article = function() {
     return(
         <div className="row mt-3">
           <div className="col">
-            <div className="card">            
+            <div className="card p-3">            
              <div>
              <img className="card-img-top" 
                 id="image" 
