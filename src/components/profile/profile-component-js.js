@@ -9,10 +9,11 @@ const Profile = function() {
             <NavBar />
             <div className="container">
                 <div className="row mt-5">
-                    <div className="col">
+                    <div className="col-md-3">
                         <ProfileImage />
                     </div>
-                    <div className="col">
+                    
+                    <div className="col-md-6 offset-md-3">
                         <ProfileInfo />
                     </div>
                 </div>

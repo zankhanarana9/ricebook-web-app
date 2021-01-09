@@ -1,9 +1,8 @@
 import React from 'react'
-import ProfileImage from './ProfileImage'
-
+import './profile-component-css.css'
 const ProfileInfo = function() {
     return(
-        <div className="row">
+        <div className="row text-left">
             <div className="col">
               <form id="formProfile" 
                 className="needs-validation" novalidate
@@ -37,8 +36,8 @@ const ProfileInfo = function() {
 
                 {/* <!--Email address-->                */}
                 <div className="form-group row  mt-2">
-                  <label htmlFor="staticEmail" className="col-sm-2 col-form-label">Email Address</label>
-                  <div className="col-sm-10">
+                  <label htmlFor="staticEmail" className="col-sm-3 col-form-label">Email Address</label>
+                  <div className="col-sm-9">
                     <input type="text" readonly 
                       className="form-control-plaintext"
                       id="staticEmail" 
@@ -48,8 +47,8 @@ const ProfileInfo = function() {
                     
                 {/* <!--Date of birth--> */}
                 <div className="form-group row  mt-2">
-                  <label htmlFor="staticEmail" className="col-sm-2 col-form-label">Date of Birth</label>
-                  <div className="col-sm-10">
+                  <label htmlFor="staticEmail" className="col-sm-3 col-form-label">Date of Birth</label>
+                  <div className="col-sm-9">
                     <input type="text" readonly 
                       className="form-control-plaintext" 
                       id="staticEmail" 
@@ -59,15 +58,15 @@ const ProfileInfo = function() {
                 
                 {/* <!-- Last updated--> */}
                 <div className="form-group row mt-2">
-                  <label htmlFor="staticEmail" className="col-sm-2 col-form-label">Last Updated</label>
+                  <label htmlFor="staticEmail" className="col-sm-3 col-form-label">Last Updated</label>
                   <div className="col-sm-10">
-                    <input type="text" readonly className="form-control-plaintext" id="timeStamp" name="timeStamp" />
+                    <span readonly className="form-control-plaintext" id="timeStamp" name="timeStamp"></span>
                   </div>
                 </div>
 
             
                 {/* <!-- submit --> */}
-                <div className="form-row col-md-6 mt-2">
+                <div className="form-row col-md-6 mt-2 mb-2">
                   <div className="col-sm-6">
                    <button className="btn btn-primary">
                        Update

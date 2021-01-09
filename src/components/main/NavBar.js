@@ -5,7 +5,9 @@ const NavBar = function() {
     return(
         <div className="mx-auto sticky-top">
             <nav className="container-fluid  navbar  navbar-expand-md navbar-dark">
-                <a className="navbar-brand  mb-0 h1 pl-2" href="Main.html">LinkZone</a>
+                <Link to="/main/" className="navbar-brand  mb-0 h1 pl-2" >
+                    Ricebook
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
