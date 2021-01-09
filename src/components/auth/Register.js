@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = function() {
     return(
@@ -93,7 +94,10 @@ const Register = function() {
                         <div className="form-group row">
                             <div className="col-lg-6">
                                 <div className="mb-3">                                    
-                                    <button className="btn btn-primary">Register</button>
+                                    {/* <button className="btn btn-primary">Register</button> */}
+                                    <Link to="/main/" className="btn btn-primary">
+                                        Register
+                                    </Link>
                                 </div>
                             </div>
                             <div className="col-lg-6">

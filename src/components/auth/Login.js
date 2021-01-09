@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const Login = function() {
-    return(
+function Login() {  
+    return (      
         <section id="login">
              <div style={{margin: "0px auto",display:"block" }}>
                 <div className="row">
@@ -41,18 +42,24 @@ const Login = function() {
                                 </div>
                             </div>
                         </div>
-                        <div className="form-group row">
+                        {/* <div className="form-group row">
                            <div className="col-lg-6">
                             <div className="mb-3">                                    
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-primary"
+                                    onClick={this.handleClick}
+                                >Login</button>
                             </div>
                            </div>
+                        </div> */}
+                        <div className="form-group row">
+                            <Link to={"/main/"} className="btn btn-primary">
+                                Login
+                            </Link>
                         </div>
                     </form>
                 </div>
              </div>
         </section>
-    )
-
+   )
 }
 export default Login;
