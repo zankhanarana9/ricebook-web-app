@@ -3,7 +3,7 @@ import Followers from './Followers';
 import Article from './Article';
 import HeadLine from './Headline';
 
-const MainContent = ({followers, follow}) => {
+const MainContent = ({followers, follow, posts}) => {
     return(
         <div className="row mt-2">
             <div className="col-md-3 d-none d-md-block  ms-3">
@@ -21,7 +21,7 @@ const MainContent = ({followers, follow}) => {
                 }
                 </div>
             </div>
-            <div className="col-sm-12 col-md-8 d-block ms-3">
+            <div className="col-sm-12 col-md-8 d-block ms-3">                
                     <div className="row">
                         <div className="col-8">
                         <HeadLine 
@@ -30,8 +30,14 @@ const MainContent = ({followers, follow}) => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-8">
-                            <Article />                                        
+                        <div className="col-8">                           
+                            {
+                                posts.map(post =>                                     
+                                    <Article key = {post.id}
+                                        post =  {post}                                        
+                                    />  
+                                )
+                            }                                      
                         </div>
                     </div>
                 </div>                            

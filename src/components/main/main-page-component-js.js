@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './NavBar';
+import NavBar from './navbar-component-js';
 import './main.css';
 import MainTop from './main-top-component-js';
 import MainContent from './main-content-component-js';
@@ -23,32 +23,31 @@ const followers = [
 class MainPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isUserLoggedIn: true,
-            defaultHeadLine: "",
-            headLine:"Status goes here...",
-            follow: false
-        }
-    }
-    updateHeadLine = (newHeadLine) => {
-        this.setState({
-            headLine: newHeadLine
-        });
+        props.init();
     }
 
+    // updateHeadLine = (newHeadLine) => {
+    //     this.setState({
+    //         headLine: newHeadLine
+    //     });
+    // }
     render() {
 
         return (
-            <div>
+            <div>            
                 <NavBar />
                 <div className="container-fluid">
                     <MainTop 
-                        followers={followers}
-                        follow={this.state.follow}                            
+                        currentUser = {this.props.currentUser}
+                        userHeadline = {this.props.userHeadLine}
+                        followers = {this.props.followers} 
+                        updateHeadline = {this.props.updateHeadLine}                       
+                        follow={false}                            
                     />
                     <MainContent 
+                        posts = {this.props.posts}
                         followers={followers}
-                        follow={this.state.follow} 
+                        follow={false} 
                     />                                
                     </div>
                 </div>

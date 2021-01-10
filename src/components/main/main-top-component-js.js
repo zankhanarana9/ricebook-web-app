@@ -1,15 +1,19 @@
 import React from 'react';
-import Self from './Self';
+import Self from './self-component-js';
 import AddPost from './add-post-component-js';
 import Followers from './Followers';
 
 
-const MainTop = ({followers, follow}) => {
+const MainTop = ({currentUser, userHeadline, followers, follow, updateHeadline}) => {
     return( 
         <div className="row mt-3" >
             <div className="col-md-3 d-none d-md-block border ms-3">
                 <div className="row">
-                    <Self />
+                    <Self 
+                        user = {currentUser}
+                        headline = {userHeadline}
+                        update = {updateHeadline}
+                    />
                 </div>
             </div>
             

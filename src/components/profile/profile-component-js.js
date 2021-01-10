@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../main/NavBar'
+import NavBar from '../main/navbar-component-js.js'
 import ProfileImage from './ProfileImage';
 import ProfileInfo from './ProfileInfo';
 

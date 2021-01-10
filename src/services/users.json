@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "Bret",
+        "email": "Sincere@april.biz",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "followers": []
+    },
+    {
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "Antonette",
+        "email": "Shanna@melissa.tv",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "followers": []
+    },
+    {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "followers": []
+    }
+
+]

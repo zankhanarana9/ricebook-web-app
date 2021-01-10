@@ -1,3 +1,7 @@
+import Users from './users.json';
+
+let users = Users;
+
 class UserService {
     
     static getUsers =   () => {
@@ -6,6 +10,13 @@ class UserService {
         
         return users;              
     }
+
+    static getUserById = (userId) => {
+        return users.find(user => 
+                user.id === userId
+            ).username;
+    }
+
 }
 
 export default UserService;
