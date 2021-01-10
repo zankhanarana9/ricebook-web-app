@@ -8,6 +8,7 @@ import {createStore} from 'redux';
 import MainReducer from '../reducers/main-reducer';
 
 const store = createStore(MainReducer);
+console.log(store.getState());
 
 class Ricebook extends React.Component {
     render() {

@@ -4,24 +4,22 @@ import ArticleService from '../services/article-service';
 import UserService from '../services/user-service';
 
 const stateToPropertyMapper = state => {
-    return {
-        isUserLoggedIn: state.isUserLoggedIn,
-        currentUser: state.currentUser,    
-        userHeadLine:state.userHeadLine , 
-        posts: state.posts,
-        followers: state.followers 
-    }
+    return state;
 }
 
 const actionToPropertyMapper = dispatch => ({
     init: async () => {
         let posts = await ArticleService.getPosts();        
-        let followers = await UserService.getUsers();                               
+        let user = await UserService.getCurrentUser();
+        let friends = await UserService.getFriendList(user);
+        let followers = await UserService.getFollowers(user);                                                        
+
         dispatch({
             type: "INITIAL_STATE",
             posts: posts,
-            currentUser: followers[followers.length-1],
-            followers: followers.slice(0,2)
+            currentUser: user,
+            followers: followers,
+            friends: friends
         });
     },  
     
@@ -31,6 +29,24 @@ const actionToPropertyMapper = dispatch => ({
             newHeadLine: newHeadLine
         });
     },
+
+    updateFollower: (user, follower) => {       
+        UserService.updateFollow(user, follower);       
+        dispatch({
+            type:"UPDATE_FOLLOWERS",
+            followers: UserService.getFollowers(user),
+            friends: UserService.getFriendList(user)
+        })
+    },
+
+    addPost: (post) => {        
+        ArticleService.addPost(post);
+        console.log(ArticleService.getPosts());
+        dispatch({
+            type:"ADD_NEW_POST",
+            posts: ArticleService.getPosts()
+        })
+    }
 })
 
 const MainPageContainer = connect(stateToPropertyMapper,actionToPropertyMapper)(MainPage)

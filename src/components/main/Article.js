@@ -12,7 +12,7 @@ class Article extends React.Component {
              {/* display an image if the post has imageUrl */}
              <h5 className="card-title">
                 {
-                  ArticleService.getPostUser(this.props.post.id)
+                  ArticleService.getPostUser(this.props.post.id).name
                 }
             </h5>
              {

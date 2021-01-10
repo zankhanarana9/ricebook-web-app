@@ -7,7 +7,43 @@
         "dateOfBirth": "09/04/1993",
         "headline":"Hello, sunshine",
         "avatar": "image_url",
-        "followers": []
+        "friends":[
+            {
+                "userid": 1,
+                "friendid": 2,
+                "follow": false
+            },
+            {
+                "userid": 1,
+                "friendid": 3,
+                "follow": true
+            },
+            {
+                "userid": 1,
+                "friendid": 4,
+                "follow": true
+            },
+            {
+                "userid": 1,
+                "friendid": 5,
+                "follow": false
+            },
+            {
+                "userid": 1,
+                "friendid": 6,
+                "follow": true
+            },
+            {
+                "userid": 1,
+                "friendid": 7,
+                "follow": true
+            },
+            {
+                "userid": 1,
+                "friendid": 8,
+                "follow": false
+            }
+        ]
     },
     {
         "id": 2,
@@ -17,7 +53,7 @@
         "dateOfBirth": "09/04/1993",
         "headline":"Hello, sunshine",
         "avatar": "image_url",
-        "followers": []
+        "friends": []
     },
     {
         "id": 3,
@@ -27,7 +63,77 @@
         "dateOfBirth": "09/04/1993",
         "headline":"Hello, sunshine",
         "avatar": "image_url",
-        "followers": []
+        "friends":[]
+    },
+    {
+        "id": 4,
+        "name": "Clementine Bauch",
+        "username": "Nicole",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
+    },
+    {
+        "id": 5,
+        "name": "Clementine Bauch",
+        "username": "Rudy",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
+    },
+    {
+        "id": 6,
+        "name": "Clementine Bauch",
+        "username": "Josh",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
+    },
+    {
+        "id": 7,
+        "name": "Clementine Bauch",
+        "username": "Cameron",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
+    },
+    {
+        "id": 8,
+        "name": "Clementine Bauch",
+        "username": "Maddy",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
+    },
+    {
+        "id": 9,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
+    },
+    {
+        "id": 10,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+        "email": "Nathan@yesenia.net",
+        "dateOfBirth": "09/04/1993",
+        "headline":"Hello, sunshine",
+        "avatar": "image_url",
+        "friends":[]
     }
 
 ]

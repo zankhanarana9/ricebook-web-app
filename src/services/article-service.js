@@ -4,6 +4,7 @@ import UserService from './user-service';
 let posts = Posts
 
 let comments = ["This is a place holder for comments"]
+
 class ArticleService {
     
     // static getPosts =  async () => { 
@@ -29,6 +30,11 @@ class ArticleService {
     
     static getComments =  (postId) => {
         return comments.filter(comment => comment.postId === postId);
+    }
+
+    static addPost = (newPost) => {
+        //call the api that will add the new post
+        posts.unshift(newPost);
     }
 }
 

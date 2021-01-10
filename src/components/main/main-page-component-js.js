@@ -4,33 +4,11 @@ import './main.css';
 import MainTop from './main-top-component-js';
 import MainContent from './main-content-component-js';
 
-
-const followers = [
-    {
-        name: "John Doe",
-        id: 123
-    },
-    {
-        name: "Harvey Spectre",
-        id: 234
-    },
-    {
-        name: "Mike Ross",
-        id: 345
-    }
-]
-
 class MainPage extends React.Component {
     constructor(props) {
-        super(props);
-        props.init();
+        super(props);        
+        props.init();               
     }
-
-    // updateHeadLine = (newHeadLine) => {
-    //     this.setState({
-    //         headLine: newHeadLine
-    //     });
-    // }
     render() {
 
         return (
@@ -38,16 +16,17 @@ class MainPage extends React.Component {
                 <NavBar />
                 <div className="container-fluid">
                     <MainTop 
-                        currentUser = {this.props.currentUser}
-                        userHeadline = {this.props.userHeadLine}
-                        followers = {this.props.followers} 
-                        updateHeadline = {this.props.updateHeadLine}                       
-                        follow={false}                            
+                        currentUser = {this.props.UserReducer.currentUser}
+                        userHeadline = {this.props.UserReducer.userHeadLine}
+                        followers = {this.props.ContentReducer.followers} 
+                        updateHeadline = {this.props.updateHeadLine} 
+                        updateFollowers={this.props.updateFollower}
+                        addPost={this.props.addPost}                                                                          
                     />
                     <MainContent 
-                        posts = {this.props.posts}
-                        followers={followers}
-                        follow={false} 
+                        currentUser = {this.props.UserReducer.currentUser}
+                        ContentReducer = {this.props.ContentReducer}  
+                        updateFollowers={this.props.updateFollower}                                              
                     />                                
                     </div>
                 </div>

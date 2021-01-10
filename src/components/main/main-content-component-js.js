@@ -1,25 +1,36 @@
 import React from 'react';
-import Followers from './Followers';
 import Article from './Article';
 import HeadLine from './Headline';
+import Followers from './Followers';
 
-const MainContent = ({followers, follow, posts}) => {
+const MainContent = ({ContentReducer,updateFollowers, currentUser}) => {
     return(
         <div className="row mt-2">
-            <div className="col-md-3 d-none d-md-block  ms-3">
-                <div className="row m-2 border">
+            <div className="col-md-3 d-none d-md-block  ms-3">                                           
                 {
-                    followers.map(follower =>{                                    
-                        return (
+                    ContentReducer.friends.length > 0 ? 
+                    (<div className="row m-2 border">   
+                        <h5 className="text-left mt-1">Friends</h5>                     
+                    {
+                        ContentReducer.friends.map(friend =>                                    
                             <Followers 
-                            key={follower.id.toString()}
-                            user={follower}
-                            follow={follow}
-                        />
-                        )
-                    })   
-                }
-                </div>
+                                key={friend.id.toString()}
+                                follower={friend}
+                                follow={friend.follow}
+                                currentUser = {currentUser}
+                                updateFollowers = {updateFollowers}
+                                display={!friend.follow}
+                            />
+                        )   
+                    }                            
+                    </div> ) :
+                    <div className="row m-2 border">
+                        <h5 className="text-left mt-1">Friends</h5> 
+                        <h6 className="text-left mt-1">
+                            Hurray! You're following all your friends!
+                        </h6>
+                    </div>
+                }                             
             </div>
             <div className="col-sm-12 col-md-8 d-block ms-3">                
                     <div className="row">
@@ -30,9 +41,9 @@ const MainContent = ({followers, follow, posts}) => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-8">                           
+                        <div className="col-8">                             
                             {
-                                posts.map(post =>                                     
+                                ContentReducer.posts.map(post =>                                     
                                     <Article key = {post.id}
                                         post =  {post}                                        
                                     />  

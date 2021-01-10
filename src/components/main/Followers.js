@@ -3,32 +3,28 @@ import React from 'react';
 class Followers extends React.Component {
 
    constructor(props) {
-       super(props);
-       this.state={
-           follow: this.props.follow
-       }
+       super(props);                   
    }
    
    toggleFollow = () => {
-        this.setState(function(prevState) {
-            return {
-                follow: !prevState.follow
-            }
-        });
+        this.props.updateFollowers(this.props.currentUser, this.props.follower);        
     }
    
    render() {    
         return (            
             <div className="px-auto mt-3 mb-3">
                <div className="row">
-                   <div className="col text-left" style={{textAlign: "left"}}>
-                        <button className="btn">{this.props.user.name}</button>                        
+                   <div className="col text-left" style={{textAlign: "left"}}>                   
+                        <button className="btn">{this.props.follower.username}</button>                        
                    </div>
                    <div className="col">
-                        <button className="btn btn-primary"
+                   {                      
+                       this.props.display &&
+                       <button className="btn btn-primary"
                             onClick={this.toggleFollow}>
-                                {this.state.follow ? "Unfollow" : "Follow"}
+                                {this.props.follow ? "Unfollow" : "Follow"}
                         </button>
+                   }                        
                    </div>
                </div>
             </div>        
