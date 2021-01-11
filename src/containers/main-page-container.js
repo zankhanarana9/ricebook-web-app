@@ -2,6 +2,7 @@ import MainPage from '../components/main/main-page-component-js';
 import {connect} from 'react-redux';
 import ArticleService from '../services/article-service';
 import UserService from '../services/user-service';
+import { withRouter } from 'react-router-dom';
 
 const stateToPropertyMapper = state => {
     return state;
@@ -17,7 +18,6 @@ const actionToPropertyMapper = dispatch => ({
         dispatch({
             type: "INITIAL_STATE",
             posts: posts,
-            currentUser: user,
             followers: followers,
             friends: friends
         });
@@ -40,8 +40,7 @@ const actionToPropertyMapper = dispatch => ({
     },
 
     addPost: (post) => {        
-        ArticleService.addPost(post);
-        console.log(ArticleService.getPosts());
+        ArticleService.addPost(post);        
         dispatch({
             type:"ADD_NEW_POST",
             posts: ArticleService.getPosts()
@@ -49,6 +48,6 @@ const actionToPropertyMapper = dispatch => ({
     }
 })
 
-const MainPageContainer = connect(stateToPropertyMapper,actionToPropertyMapper)(MainPage)
+const MainPageContainer = withRouter(connect(stateToPropertyMapper,actionToPropertyMapper)(MainPage))
 
 export default MainPageContainer;

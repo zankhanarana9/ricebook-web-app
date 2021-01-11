@@ -12,27 +12,25 @@ const store = createStore(MainReducer);
 class Ricebook extends React.Component {
     render() {
         return(                      
-            <Router>
-                <Provider store={store}>
-                <Route path="/" exact
-                    render={() => <LoginPageContainer 
-                    login={store.getState().login} 
-                        LoginReducer={store.getState().LoginReducer}
-                    />  }
-                />                    
+            <Router>                                        
+                <Provider store={store}>                
+                    <Route path="/" exact>                    
+                            {<LoginPageContainer /> }                    
+                    </Route>                  
 
-                <Route path="/main" exact >                                 
-                    <MainPageContainer />  
-                </Route>               
-                <Route 
-                    exact
-                    path="/profile/:id"
-                    render= {() => <Profile user={store.getState().LoginReducer.currentUser}/>}    
-                />   
+                    <Route path="/main" exact 
+                        render={() => 
+                            <MainPageContainer />  
+                        }
+                    />                                                                              
+                                
+                    <Route 
+                        exact
+                        path="/profile/:id"
+                        render= {() => <Profile user={store.getState().LoginReducer.currentUser}/>}    
+                    />   
                 </Provider>                 
-            </Router>
-            
-            
+            </Router>    
         )        
     }
 }

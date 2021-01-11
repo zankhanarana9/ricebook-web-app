@@ -1,27 +1,28 @@
 
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 
 class Login extends React.Component {  
     
-
     constructor(props) {
-        super(props);
-        console.log(this.props);
+        super(props);        
         this.state = {
             email: "",
             password: ""
         }
     }
 
-    handleClick = (event) => {
+    handleClick = (event) => {        
         event.preventDefault();   
         if(this.state.email === "" ||
             this.state.password === "") {
                 alert("Username and apssword are required");
                 return;
             }
-        this.props.login(this.state.email, this.state.password); 
-                              
+        this.props.login();   
+        if(this.props.LoginReducer.isUserLoggedIn) {
+            this.props.history.push("/main");
+        }                                     
     }   
 
     setEmail = (event) => {

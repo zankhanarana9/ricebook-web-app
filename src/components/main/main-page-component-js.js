@@ -14,11 +14,11 @@ class MainPage extends React.Component {
         return (
             <div>            
                 <NavBar 
-                    currentUser={this.props.UserReducer.currentUser}
+                    currentUser={this.props.LoginReducer.currentUser}
                 />
                 <div className="container-fluid">
                     <MainTop 
-                        currentUser = {this.props.UserReducer.currentUser}
+                        currentUser = {this.props.LoginReducer.currentUser}
                         userHeadline = {this.props.UserReducer.userHeadLine}
                         followers = {this.props.ContentReducer.followers} 
                         updateHeadline = {this.props.updateHeadLine} 
@@ -26,7 +26,7 @@ class MainPage extends React.Component {
                         addPost={this.props.addPost}                                                                          
                     />
                     <MainContent 
-                        currentUser = {this.props.UserReducer.currentUser}
+                        currentUser = {this.props.LoginReducer.currentUser}
                         ContentReducer = {this.props.ContentReducer}  
                         updateFollowers={this.props.updateFollower}                                              
                     />                                

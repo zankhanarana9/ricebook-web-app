@@ -6,7 +6,7 @@ const initialState = {
 
 const ContentReducer = function(state = initialState, action) {
     switch(action.type) {
-        case "INITIAL_STATE":            
+        case "INITIAL_STATE":                    
             return {
                 followers:action.followers,
                 posts:action.posts,

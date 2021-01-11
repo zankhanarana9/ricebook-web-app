@@ -4,14 +4,15 @@ const initialState = {
 }
 const LoginReducer = function(state = initialState,action) {
     switch(action.type) {
-        case "INITIAL_STATE" : 
+        case "INITIAL" : 
             return state;
 
-        case "LOG_IN":
-            return {
+        case "LOG_IN":            
+            let newstate = {
                 "isUserLoggedIn" : true,
                 "currentUser": action.user                            
-            }
+            }           
+            return newstate;
         default: return state
     }
 }
