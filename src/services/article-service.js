@@ -36,6 +36,20 @@ class ArticleService {
         //call the api that will add the new post
         posts.unshift(newPost);
     }
+
+    static addComment(post, newComment) {
+        post.comments.unshift(newComment);
+    }
+
+    static likeComment(comment,like) {
+        console.log(comment.likes);
+        if(like) {
+            comment.likes++;
+        }
+        else{
+            comment.likes--;
+        }
+    }
 }
 
 export default ArticleService;

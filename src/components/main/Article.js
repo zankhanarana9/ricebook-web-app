@@ -4,6 +4,38 @@ import ArticleService from '../../services/article-service';
 
 class Article extends React.Component {
 
+    constructor(props) {
+      super(props);
+      this.state ={
+        newComment: ""
+      }
+    }
+
+    handleChange = (event) => {
+      this.setState({
+        newComment: event.target.value
+      })
+    }
+
+    onCommentClick = () => {
+      if(this.state.newComment !== ""
+        && this.state.newComment !== undefined
+      ) {
+        let newComment ={
+            "postid": this.props.post.id,
+            "id" : (new Date()).getTime(),
+            "userid": 2,
+            "date": new Date(),
+            "body": this.state.newComment,
+            "likes": 0
+        }
+        this.props.addComment(this.props.post,newComment);
+        this.setState({
+          newComment: ""
+        });
+      }
+    }  
+
     render() {
       return(
         <div className="row mt-3">
@@ -36,9 +68,13 @@ class Article extends React.Component {
                 {/* add comment button */}
                 <div className="input-group mt-1">
                   <input type="text" className="form-control"
-                    placeholder="Add a comment" />
+                    placeholder="Add a comment" 
+                      value={this.state.newComment}
+                      onChange={this.handleChange}
+                    />
                   <span className="input-group-text">
-                    <button className="btn">
+                    <button className="btn"
+                    onClick={this.onCommentClick}>
                       Comment
                   </button>
                   </span>
@@ -51,6 +87,7 @@ class Article extends React.Component {
                     <Comment
                      key={comment.id} 
                        comment = {comment}
+                       onLike = {this.props.onLike}
                      />
                   )
                 }                                            

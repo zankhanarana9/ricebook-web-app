@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import Profile from '../components/profile/profile-component-js';
 import { Provider } from 'react-redux';
 import MainPageContainer from './main-page-container';  
@@ -17,9 +17,9 @@ class Ricebook extends React.Component {
                     <Route path="/" exact>                    
                             {<LoginPageContainer /> }                    
                     </Route>                  
-
+                    
                     <Route path="/main" exact 
-                        render={() => 
+                        render={() =>                             
                             <MainPageContainer />  
                         }
                     />                                                                              

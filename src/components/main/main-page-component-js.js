@@ -28,7 +28,9 @@ class MainPage extends React.Component {
                     <MainContent 
                         currentUser = {this.props.LoginReducer.currentUser}
                         ContentReducer = {this.props.ContentReducer}  
-                        updateFollowers={this.props.updateFollower}                                              
+                        updateFollowers={this.props.updateFollower} 
+                        addComment = {this.props.addComment}       
+                        likeComment={this.props.likeComment}                                      
                     />                                
                     </div>
                 </div>

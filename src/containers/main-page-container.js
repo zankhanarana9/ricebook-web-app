@@ -45,6 +45,23 @@ const actionToPropertyMapper = dispatch => ({
             type:"ADD_NEW_POST",
             posts: ArticleService.getPosts()
         })
+    },
+
+    addComment: (post, newComment) => {
+        ArticleService.addComment(post,newComment);
+        dispatch({
+            type:"ADD_NEW_COMMENT",
+            posts: ArticleService.getPosts()
+        });
+    },
+
+    likeComment: (comment,like) => {
+        console.log("I am here");
+        ArticleService.likeComment(comment,like);
+        dispatch({
+            type: "LIKE_COMMENT",
+            posts: ArticleService.getPosts()
+        })
     }
 })
 

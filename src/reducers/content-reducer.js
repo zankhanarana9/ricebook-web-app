@@ -25,6 +25,18 @@ const ContentReducer = function(state = initialState, action) {
                 ...state,
                 posts: action.posts
             }
+
+        case "ADD_NEW_COMMENT":
+            return {
+                ...state,
+                posts: action.posts
+            } 
+            
+        case "LIKE_COMMENT":
+            return {
+                ...state,
+                posts: action.posts
+            }    
         default: return state;    
     }
 }

@@ -3,7 +3,7 @@ import Article from './Article';
 import HeadLine from './Headline';
 import Followers from './Followers';
 
-const MainContent = ({ContentReducer,updateFollowers, currentUser}) => {
+const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,likeComment}) => {
     return(
         <div className="row mt-2">
             <div className="col-md-3 d-none d-md-block  ms-3">                                           
@@ -45,7 +45,9 @@ const MainContent = ({ContentReducer,updateFollowers, currentUser}) => {
                             {
                                 ContentReducer.posts.map(post =>                                     
                                     <Article key = {post.id}
-                                        post =  {post}                                        
+                                        post =  {post}   
+                                        addComment = {addComment}        
+                                        onLike={likeComment}                             
                                     />  
                                 )
                             }                                      
