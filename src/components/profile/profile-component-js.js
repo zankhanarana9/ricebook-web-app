@@ -3,10 +3,12 @@ import NavBar from '../main/navbar-component-js.js'
 import ProfileImage from './ProfileImage';
 import ProfileInfo from './ProfileInfo';
 
-const Profile = function() {
+const Profile = function({user}) {
     return(
         <div>
-            <NavBar />
+            <NavBar 
+                currentUser={user}
+            />
             <div className="container">
                 <div className="row mt-5">
                     <div className="col-md-3">

@@ -1,38 +1,39 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import LandingPage from '../components/auth/LandingPage';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Profile from '../components/profile/profile-component-js';
 import { Provider } from 'react-redux';
 import MainPageContainer from './main-page-container';  
 import {createStore} from 'redux';
 import MainReducer from '../reducers/main-reducer';
+import LoginPageContainer from './login-container';
 
 const store = createStore(MainReducer);
-console.log(store.getState());
 
 class Ricebook extends React.Component {
     render() {
-        return(            
+        return(                      
             <Router>
-                <Route path="/" 
-                    exact
-                    render={() =>
-                        <LandingPage 
-                            isUserLoggedIn = {this.state.isUserLoggedIn} />
-                    }                     
-                />    
-                <Route path="/main" >                                 
-                    <Provider store={store}>                    
-                        <MainPageContainer />                      
-                    </Provider>  
+                <Provider store={store}>
+                <Route path="/" exact
+                    render={() => <LoginPageContainer 
+                    login={store.getState().login} 
+                        LoginReducer={store.getState().LoginReducer}
+                    />  }
+                />                    
+
+                <Route path="/main" exact >                                 
+                    <MainPageContainer />  
                 </Route>               
                 <Route 
                     exact
-                    path="/profile"
-                    render= {() => <Profile />}    
-                />                    
+                    path="/profile/:id"
+                    render= {() => <Profile user={store.getState().LoginReducer.currentUser}/>}    
+                />   
+                </Provider>                 
             </Router>
-        )
+            
+            
+        )        
     }
 }
 

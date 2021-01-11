@@ -1,5 +1,4 @@
 const initialState = {
-    isUserLoggedIn: false,
     currentUser:{},    
     userHeadLine:"" 
 }

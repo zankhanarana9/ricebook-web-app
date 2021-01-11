@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NavBar = function() {
+const NavBar = function({currentUser}) {
     return(
         <div className="mx-auto sticky-top">
             <nav className="container-fluid  navbar  navbar-expand-md navbar-dark">
@@ -14,7 +14,7 @@ const NavBar = function() {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">              
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li className="nav-item ">
-                        <Link to="/profile/" className="nav-link">Profile </Link>
+                        <Link to={`/profile/${currentUser.id}`} className="nav-link">Profile </Link>
                         </li>
                         <li className="nav-item">
                         <a className="nav-link" href="/">Logout</a>

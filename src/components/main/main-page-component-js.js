@@ -13,7 +13,9 @@ class MainPage extends React.Component {
 
         return (
             <div>            
-                <NavBar />
+                <NavBar 
+                    currentUser={this.props.UserReducer.currentUser}
+                />
                 <div className="container-fluid">
                     <MainTop 
                         currentUser = {this.props.UserReducer.currentUser}

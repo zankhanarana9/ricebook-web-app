@@ -1,0 +1,17 @@
+ <Provider store={store}>
+      <Router>
+        <NavBar />
+        <div className="container">
+          <Switch>
+            <AuthRoute path="/login" type="guest">
+              <LoginPage />
+            </AuthRoute>
+            <AuthRoute path="/home" render={HomePage} type="private" />
+            <AuthRoute path="/my-account" type="private">
+              <MyAccount />
+            </AuthRoute>
+            <Route path="/" render={IndexPage} />
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
