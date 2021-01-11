@@ -35,9 +35,9 @@ const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,li
             <div className="col-sm-12 col-md-8 d-block ms-3">                
                     <div className="row">
                         <div className="col-8">
-                        <HeadLine 
+                        {/* <HeadLine 
                             headline = ""
-                            updateHeadLine = {() => alert("I have to update!")}/>                                
+                            updateHeadLine = {() => alert("I have to update!")}/>                                 */}
                         </div>
                     </div>
                     <div className="row">
