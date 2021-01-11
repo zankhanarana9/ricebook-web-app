@@ -3,6 +3,7 @@ A social networking website build utilizitng many of the latest Web design techn
 
 # Deployement
 The ReactJS webapp has been deployed using AWS Amplify.
+
 Deployed link: https://master.d378hcpkiyzwd1.amplifyapp.com/
 
 # Features
