@@ -6,7 +6,7 @@ class Followers extends React.Component {
        super(props);                   
    }
    
-   toggleFollow = () => {
+   toggleFollow = () => {       
         this.props.updateFollowers(this.props.currentUser, this.props.follower);        
     }
    

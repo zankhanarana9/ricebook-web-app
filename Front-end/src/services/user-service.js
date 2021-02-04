@@ -19,59 +19,52 @@ function getRandom(arr, n) {
 
 class UserService {
     
-    static getUsers =   () => {
-        let users =  fetch('https://jsonplaceholder.typicode.com/users/')
-            .then(response => response.json());           
-        return users;              
+    static getUsers =   () => {  
+        
+        return fetch('https://localhost:4200/api/users')
+            .then(response => response.json());            
     }
 
     static getCurrentUser =() => {
-        return users[0];
+        return fetch('http://localhost:4200/api/users/1')
+            .then(response => response.json());        
     };
 
-    static getUserById = (userId) => {           
+    static getUserById = (userId) => {      
+        // return fetch('http://localhost:4200/api/users/' + userId)
+        //     .then(response => response.json());   
+        
         return users.find(user => 
                 user.id === userId
             );        
     }
 
-    static getFriendList = (user) => {
-        let friends = [];
-        if(user !== undefined) {
-            let friendList = user.friends.filter(friend => friend.follow === false);
-            if(friendList.length > 5) {
-                friendList = getRandom(friendList,5);
-            }
-            for(let i =0; i < friendList.length; i++) {
-                let friend = friendList[i];
-                let user = this.getUserById(friend.friendid);                
-                user.follow = friend.follow;
-                friends.push(user);
-            }
-        }
-        
-        return friends;
+    static getFriendList = async (user) => {        
+        let friends =  await fetch(`http://localhost:4200/api/users/${user.id}/friends`)
+            .then(response => response.json());            
+        let friendList = friends.filter(friend => friend.follow === false);            
+        if(friendList.length > 5) {
+            friendList = getRandom(friendList, 5);
+        }    
+        return friendList;
     }
     
-    static getFollowers = (user) => {
-        let followers = user.friends.filter(friend => friend.follow === true);;        
-        let f = [];
-        if(followers.length > 3) {
-            followers = getRandom(followers,3);
-        }
-        for(let i=0; i < followers.length; i++) {
-            let user = this.getUserById(followers[i].friendid);            
-            user.follow = followers[i].follow;
-            f.push(user);
-        }                                    
-        return f;
+    static getFollowers = async (user) => {
+        let friends =  await fetch(`http://localhost:4200/api/users/${user.id}/friends`)
+            .then(response => response.json());
+        let friendList = friends.filter(friend => friend.follow === true);            
+        if(friendList.length > 5) {
+            friendList = getRandom(friendList, 5);
+        }    
+        return friendList;        
     }
 
     static updateFollow(user, follower) {
-        let friend = user.friends.find(friend => 
-                friend.friendid === follower.id
-            );
-       friend.follow = !friend.follow;          
+        console.log(user);
+        return fetch(`http://localhost:4200/api/users/${user.id}/friends/${follower.id}`, {
+            method:'PUT'
+        })
+                .then(response => response.json());        
     }
 }
 

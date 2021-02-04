@@ -20,7 +20,7 @@ class Ricebook extends React.Component {
                     
                     <Route path="/main" exact 
                         render={() =>                             
-                            <MainPageContainer />  
+                            <MainPageContainer currentUser={store.getState().LoginReducer.currentUser}/>  
                         }
                     />                                                                              
                                 
