@@ -26,7 +26,7 @@ const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFol
             
             <div className="col-md-3 d-none d-md-block border ms-3" >
                    
-                {
+                {/* {
                     followers.length > 0 && 
                     <div className="row m-2 ">
                         <h5 className="mt-1">Following</h5>                     
@@ -46,7 +46,7 @@ const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFol
                             }) 
                         }
                     </div>  
-                }
+                } */}
                 
             </div>   
         </div>

@@ -1,7 +1,6 @@
 import { getDefaultNormalizer } from '@testing-library/react';
-import Users from './users.json';
 
-let users = Users;
+let users = [];
 
 function getRandom(arr, n) {
     var result = new Array(n),
@@ -19,10 +18,23 @@ function getRandom(arr, n) {
 
 class UserService {
     
-    static getUsers =   () => {  
-        
-        return fetch('https://localhost:4200/api/users')
+    static getUsers =   () => {          
+        return fetch('http://localhost:4200/api/users')
             .then(response => response.json());            
+    }
+
+    static updateUserHeadline = (user, headline) => {
+        //https://localhost:4200/api/users/${user.id}/updateHeadLine
+        return fetch(`http://localhost:4200/api/users/1/updateHeadLine`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                  },
+                body:JSON.stringify( {
+                        "id": 1,
+                        "headline": headline
+                    })
+            }).then(response => response.json());
     }
 
     static getCurrentUser =() => {

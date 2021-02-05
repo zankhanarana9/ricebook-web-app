@@ -12,7 +12,7 @@ const ContentReducer = function(state = initialState, action) {
                 posts:action.posts,
                 friends: action.friends
             }
-        
+
         case "UPDATE_FOLLOWERS" :                   
             return {
                 ...state,

@@ -12,18 +12,23 @@ const actionToPropertyMapper = dispatch => ({
     init: async () => {
         let posts = await ArticleService.getPosts();        
         let user = await UserService.getCurrentUser();
-        let friends = await UserService.getFriendList(user);
-        let followers = await UserService.getFollowers(user);                                                        
-
+        // let friends = await UserService.getFriendList(user);
+        // let followers = await UserService.getFollowers(user);                                                        
+        let headline = await fetch('http://localhost:4200/api/users/1')
+            .then( response => response.json())
+            .then(response => response.headline);
+        
         dispatch({
             type: "INITIAL_STATE",
             posts: posts,
-            followers: followers,
-            friends: friends
+            headline: headline
+            // followers: followers,
+            // friends: friends
         });
     },  
     
-    updateHeadLine: (newHeadLine) => {      
+    updateHeadLine: (newHeadLine) => { 
+        let user = UserService.updateUserHeadline(1, newHeadLine);     
         dispatch({
             type: "UPDATE_HEADLINE",
             newHeadLine: newHeadLine
@@ -34,8 +39,8 @@ const actionToPropertyMapper = dispatch => ({
         UserService.updateFollow(user, follower);       
         dispatch({
             type:"UPDATE_FOLLOWERS",
-            followers: UserService.getFollowers(user),
-            friends: UserService.getFriendList(user)
+            // followers: UserService.getFollowers(user),
+            // friends: UserService.getFriendList(user)
         })
     },
 

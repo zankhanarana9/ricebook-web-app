@@ -9,6 +9,7 @@ class HeadLine extends React.Component {
         }
     }
 
+
     handleChange = (event) => {        
         this.setState({
             newHeadLine: event.target.value

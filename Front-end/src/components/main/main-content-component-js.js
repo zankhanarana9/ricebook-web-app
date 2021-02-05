@@ -7,7 +7,7 @@ const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,li
     return(
         <div className="row mt-2">
             <div className="col-md-3 d-none d-md-block  ms-3">                                           
-                {
+                {/* {
                     ContentReducer.friends.length > 0 ? 
                     (<div className="row m-2 border">   
                         <h5 className="text-left mt-1">Friends</h5>                     
@@ -30,7 +30,7 @@ const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,li
                             Hurray! You're following all your friends!
                         </h6>
                     </div>
-                }                             
+                }                              */}
             </div>
             <div className="col-sm-12 col-md-8 d-block ms-3">                
                     <div className="row">

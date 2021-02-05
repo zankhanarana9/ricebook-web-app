@@ -1,7 +1,7 @@
-import Posts from './posts.json';
+// import Posts from './posts.json';
 import UserService from './user-service';
 
-let posts = Posts
+let posts = []
 
 let comments = ["This is a place holder for comments"]
 
@@ -20,12 +20,16 @@ class ArticleService {
     // }
     
     static getPosts = () => {
-        return posts;
+        return fetch('http://localhost:4200/api/posts')
+            .then(response => response.json());
+
+        //return posts;
     }
 
     static getPostUser = (postId) => {
-        let userId =  posts.find(post => post.id === postId).userid;            
-        return UserService.getUserById(userId);                
+        return 1;
+        // let userId =  posts.find(post => post.id === postId).userid;            
+        // return UserService.getUserById(userId);                
     }
     
     static getComments =  (postId) => {
