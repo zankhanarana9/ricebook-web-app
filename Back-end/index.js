@@ -14,6 +14,8 @@ app.use(cors());
 
 require('./src/controller/users.controller')(app);
 require('./src/controller/posts.controller')(app);
+require('./src/controller/comments.controller')(app);
+
 //const userController = require('./src/controller/user.controller')(app)
 
 app.listen(4200 , "localhost", () => {
