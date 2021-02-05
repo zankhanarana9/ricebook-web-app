@@ -1,0 +1,15 @@
+[ 
+    {
+        "id": 1,
+        "title": "New post",
+        "image": "",
+        "text" : "",
+        "createdDate": "",
+        "createdBy" : {
+            "id": 1,
+            "username": "bstark"
+        },
+        "likes": 1,
+        "comments" : 1       
+    }
+]

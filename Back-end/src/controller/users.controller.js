@@ -10,8 +10,10 @@ module.exports = function(app) {
         res.send(userService.findUserById(req.params['uid']));
     });
 
-    app.get('/api/users/:uid/friends', (req,res) => {
-        res.send(userService.getUserFriends(req.params['uid']));
+    app.put('/api/users/:uid/updateHeadline', (req,res) => {
+        console.log(req.body);
+        let user = userService.updateHeadline(req.body.id, req.body.headline);
+        return res.json(user);
     });
 
     app.put('/api/users/:uid/friends/:friendId', (req, res) => {

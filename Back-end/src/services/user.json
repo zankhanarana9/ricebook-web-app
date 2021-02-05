@@ -1,0 +1,138 @@
+
+[
+    {
+        "id" : 1,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 2,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 3,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 4,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    } ,
+    {
+        "id" : 5,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    } ,
+    {
+        "id" : 6,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    } ,
+    {
+        "id" : 7,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 8,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 9,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 10,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 11,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!"
+    },
+    {
+        "id" : 12,
+        "name" : "Brandon",
+        "lastName": "Stark",
+        "emailAddress": "brandon@email.com",
+        "dob": "09/04/1993",
+        "username" : "bstark",
+        "password": "W!nterI$C0ming",
+        "avatar": "img.jpg",
+        "headline": "Winter is coming!",
+        "posts":1,
+        "followers": 5,
+        "following": 2
+    }    
+]

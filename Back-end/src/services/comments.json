@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "comment":"Wow! that's beauiful",
+        "postid": 1,
+        "createdBy" : {
+            "id": 2,
+            "username": "bstark"
+        }
+    }
+]
