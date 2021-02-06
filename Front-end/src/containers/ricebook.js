@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Profile from '../components/profile/profile-component-js';
 import { Provider } from 'react-redux';
 import MainPageContainer from './main-page-container';  
@@ -19,15 +19,13 @@ class Ricebook extends React.Component {
                     </Route>                  
                     
                     <Route path="/main" exact 
-                        render={() =>                             
-                            <MainPageContainer currentUser={store.getState().LoginReducer.currentUser}/>  
-                        }
+                        render={() => <MainPageContainer />}
                     />                                                                              
                                 
                     <Route 
                         exact
                         path="/profile/:id"
-                        render= {() => <Profile user={store.getState().LoginReducer.currentUser}/>}    
+                        render= {() => <Profile />}    
                     />   
                 </Provider>                 
             </Router>    

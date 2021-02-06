@@ -18,6 +18,7 @@ updateHeadline = (uid, headline) => {
     if(user != undefined) {
         user.headline = headline;
     }
+    console.log(user);
     return {
         username:  user.username,
         id: user.id,

@@ -1,18 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import UserService from '../../services/user-service';
 
 class Self extends React.Component {
-    
-   constructor(props) {
-       super(props);
-       this.state = {
-           newHeadLine: this.props.headline
-       }
-   } 
+
+   componentDidMount() {              
+       this.props.getHeadline();
+       console.log(this.props);
+   }
 
    handleChange = (event) => {
-       this.setState({
-           newHeadLine: event.target.value
-       })
+      this.props.handleChange(event.target.value)
    }
    render() {
     return(
@@ -24,17 +22,13 @@ class Self extends React.Component {
                  <div className="input-group">
                      <input type="text" className="form-control"
                          placeholder="What's on your mind?" 
-                         value={this.state.newHeadLine}    
+                         value={this.props.newHeadLine}    
                          onChange={this.handleChange}                    
                      />
                      <span className="input-group-text" id="basic-addon2">
                          <button className="btn"
-                            onClick = {() => {
-                                let newHeadLine = this.state.newHeadLine;
-                                this.props.update(newHeadLine);
-                                this.setState({
-                                    newHeadLine: ''
-                                })
+                            onClick = {() => {                                
+                                this.props.update(this.props.newHeadLine);
                             }}>
                              Post
                          </button>
@@ -46,4 +40,36 @@ class Self extends React.Component {
    }
 }
 
-export default Self;
+const stateToPropertyMapper = (state) => {    
+    return state.SelfReducer;
+}
+
+const actionToPropertyMapper = (dispatch) => ({
+    getHeadline : () => {
+        UserService.getCurrentUser().then(res => {
+            
+            dispatch({
+                type: "INITIAL",
+                headline: res.headline
+            })
+        })
+    },
+
+    update: (newHeadLine) => { 
+        UserService.updateUserHeadline(1, newHeadLine).then(res => {
+            dispatch({
+                type: "UPDATE_HEADLINE",
+                headline: newHeadLine
+            });
+        })             
+    },
+
+    handleChange: (newHeadLine) => {
+        dispatch({
+            type: "NEW_HEADLINE",
+            headline: newHeadLine
+        });
+    }
+});
+
+export default connect(stateToPropertyMapper, actionToPropertyMapper)(Self);

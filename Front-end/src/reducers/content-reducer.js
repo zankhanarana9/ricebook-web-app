@@ -1,7 +1,8 @@
 const initialState = {
     "followers": [],
     "posts":[],
-    "friends" : []
+    "friends" : [],
+    "currentUser" : {}   
 }
 
 const ContentReducer = function(state = initialState, action) {
@@ -10,7 +11,8 @@ const ContentReducer = function(state = initialState, action) {
             return {
                 followers:action.followers,
                 posts:action.posts,
-                friends: action.friends
+                friends: action.friends,
+                currentUser: action.user
             }
 
         case "UPDATE_FOLLOWERS" :                   
@@ -25,18 +27,7 @@ const ContentReducer = function(state = initialState, action) {
                 ...state,
                 posts: action.posts
             }
-
-        case "ADD_NEW_COMMENT":
-            return {
-                ...state,
-                posts: action.posts
-            } 
-            
-        case "LIKE_COMMENT":
-            return {
-                ...state,
-                posts: action.posts
-            }    
+  
         default: return state;    
     }
 }

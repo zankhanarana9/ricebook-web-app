@@ -1,6 +1,5 @@
 const initialState = {
     currentUser:{},    
-    userHeadLine:"" 
 }
 
 const UserReducer = function(state=initialState, action) {
@@ -10,12 +9,7 @@ const UserReducer = function(state=initialState, action) {
                 userHeadLine: action.headline ,                
                 isUserLoggedIn: true
             }
-
-        case "UPDATE_HEADLINE" :
-            return {
-                ...state,
-                userHeadLine: action.newHeadLine
-            }
+        
         default: 
             return state;
     }

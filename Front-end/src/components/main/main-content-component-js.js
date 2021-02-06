@@ -2,10 +2,18 @@ import React from 'react';
 import Article from './Article';
 import HeadLine from './Headline';
 import Followers from './Followers';
+import { connect } from 'react-redux';
+import ArticleService from '../../services/article-service';
 
-const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,likeComment}) => {
-    return(
-        <div className="row mt-2">
+class MainContent extends React.Component {
+
+    componentDidMount() {
+        this.props.findAllPosts();
+    }
+
+    render() {
+        return (
+            <div className="row mt-2">
             <div className="col-md-3 d-none d-md-block  ms-3">                                           
                 {/* {
                     ContentReducer.friends.length > 0 ? 
@@ -43,11 +51,11 @@ const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,li
                     <div className="row">
                         <div className="col-8">                             
                             {
-                                ContentReducer.posts.map(post =>                                     
+                                this.props.posts.map(post =>                                     
                                     <Article key = {post.id}
                                         post =  {post}   
-                                        addComment = {addComment}        
-                                        onLike={likeComment}                             
+                                        addComment = {this.props.addComment}        
+                                        onLike={this.props.likeComment}                             
                                     />  
                                 )
                             }                                      
@@ -55,7 +63,40 @@ const MainContent = ({ContentReducer,updateFollowers, currentUser, addComment,li
                     </div>
                 </div>                            
         </div>
-    )
+        )
+    }
 }
 
-export default MainContent;
+const stateToPropertyMapper = state => {
+    return state.PostReducer
+}
+
+const actionToPropertyMapper = dispatch => ({
+    findAllPosts : () => {
+        ArticleService.getPosts()
+            .then(res => dispatch({
+                type: "FIND_ALL_POSTS",
+                posts: res
+            })
+        )
+    },
+
+    addComment: (post, newComment) => {
+        ArticleService.addComment(post,newComment);
+        dispatch({
+            type:"ADD_NEW_COMMENT",
+            posts: ArticleService.getPosts()
+        });
+    },
+
+    likeComment: (comment,like) => {
+        console.log("I am here");
+        ArticleService.likeComment(comment,like);
+        dispatch({
+            type: "LIKE_COMMENT",
+            posts: ArticleService.getPosts()
+        })
+    }
+});
+
+export default connect(stateToPropertyMapper, actionToPropertyMapper)(MainContent);

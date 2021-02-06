@@ -23,7 +23,7 @@ class UserService {
             .then(response => response.json());            
     }
 
-    static updateUserHeadline = (user, headline) => {
+    static updateUserHeadline = (user, headline) => {        
         //https://localhost:4200/api/users/${user.id}/updateHeadLine
         return fetch(`http://localhost:4200/api/users/1/updateHeadLine`, {
                 method: "PUT",
