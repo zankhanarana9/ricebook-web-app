@@ -1,7 +1,25 @@
 [
     {
         "id": 1,
-        "comment":"Wow! that's beauiful",
+        "body":"Wow! that's beauiful",
+        "postid": 1,
+        "createdBy" : {
+            "id": 2,
+            "username": "bstark"
+        }
+    },
+    {
+        "id": 2,
+        "body":"Wow! that's beauiful",
+        "postid": 1,
+        "createdBy" : {
+            "id": 2,
+            "username": "bstark"
+        }
+    },
+    {
+        "id": 3,
+        "body":"Wow! that's beauiful",
         "postid": 1,
         "createdBy" : {
             "id": 2,

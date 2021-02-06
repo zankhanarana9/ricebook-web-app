@@ -22,6 +22,6 @@ const actionToPropertyMapper = dispatch => ({
     }
 });
 
-const LoginPageContainer =withRouter( connect(stateToPropertyMapper,actionToPropertyMapper)(LandingPage));
+const LoginPageContainer = withRouter(connect(stateToPropertyMapper,actionToPropertyMapper)(LandingPage));
 
 export default LoginPageContainer;

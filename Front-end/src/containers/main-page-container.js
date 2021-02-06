@@ -10,7 +10,7 @@ const stateToPropertyMapper = state => {
 
 const actionToPropertyMapper = dispatch => ({
     init: async () => {
-        let posts = await ArticleService.getPosts();        
+        let posts = await ArticleService.getPosts();                
         let user = await UserService.getCurrentUser();
         // let friends = await UserService.getFriendList(user);
         // let followers = await UserService.getFollowers(user);                                                        

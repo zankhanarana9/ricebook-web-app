@@ -33,6 +33,9 @@ class ArticleService {
     }
     
     static getComments =  (postId) => {
+        fetch(`/api/posts/${postId}/comments`)
+            .then(response => response.json())
+            .then(response => console.log(response));
         return comments.filter(comment => comment.postId === postId);
     }
 

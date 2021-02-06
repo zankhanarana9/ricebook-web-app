@@ -1,5 +1,5 @@
 
-const users = require('./user.json');
+const users = require('./users.json');
 
 
 //User API

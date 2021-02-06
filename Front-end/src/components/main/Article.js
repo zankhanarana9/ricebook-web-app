@@ -7,8 +7,19 @@ class Article extends React.Component {
     constructor(props) {
       super(props);
       this.state ={
-        newComment: ""
+        newComment: "",
+        comments: [] 
       }
+    }
+
+    componentDidMount() {
+      fetch(`http://localhost:4200/api/posts/${this.props.post.id}/comments`)
+        .then(response => response.json())
+        .then(res => {
+          this.setState({
+            comments: res
+          });
+        });
     }
 
     handleChange = (event) => {
@@ -82,8 +93,8 @@ class Article extends React.Component {
 
                 {/* display post comments */}                 
                 {
-                  this.props.post.comments !== undefined && 
-                  this.props.post.comments.map(comment => 
+                  this.state.comments !== undefined && 
+                  this.state.comments.map(comment => 
                     <Comment
                      key={comment.id} 
                        comment = {comment}
