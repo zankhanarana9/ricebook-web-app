@@ -1,25 +1,33 @@
 const initialState = {
     "followers": [],
-    "posts":[],
-    "friends" : [],
-    "currentUser" : {}   
+    "posts":[],    
+    "currentUser" : {}
 }
 
 const ContentReducer = function(state = initialState, action) {
     switch(action.type) {
-        case "INITIAL_STATE":                    
+        case "INITIAL_STATE":                          
             return {
-                followers:action.followers,
-                posts:action.posts,
-                friends: action.friends,
+                ...state,                
+                posts:action.posts,                
                 currentUser: action.user
             }
+
+    case "FIND_ALL_POSTS" :
+        return {
+            ...state,
+            posts: action.posts
+        };
+        case "UPDATE_HEADLINE" :
+            return {  
+                ...state,
+                currentUser: action.user,                           
+            }    
 
         case "UPDATE_FOLLOWERS" :                   
             return {
                 ...state,
-                followers: action.followers ,
-                friends: action.friends              
+                followers: action.followers ,                           
             } 
         
         case "ADD_NEW_POST":         

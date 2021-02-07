@@ -1,34 +1,45 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import UserService from '../../services/user-service';
 
 class Self extends React.Component {
 
-   componentDidMount() {              
-       this.props.getHeadline();
-       console.log(this.props);
-   }
+    constructor(props) {
+        super(props);
+        this.state = {
+            newHeadLine: ""
+        }
+    }
+
 
    handleChange = (event) => {
-      this.props.handleChange(event.target.value)
+      this.setState({
+          newHeadLine: event.target.value
+      })
    }
+
+   updateHeadline = () => {
+        this.props.updateHeadline(this.state.newHeadLine)
+        this.setState({
+            newHeadLine: ""
+        })
+   }
+
    render() {
-    return(
-        <div className="row mt-3">          
+    return(        
+        <div className="row mt-3">                  
              <div className="card-body " style={{width: "18rem"}}>
                  <h5 className="card-title">{this.props.user.name}</h5>
-                 <h6 className="card-subtitle mb-2 text-muted">{this.props.headline}</h6>                
+                 <h6 className="card-subtitle mb-2 text-muted">{this.props.user.headline}</h6>                
  
                  <div className="input-group">
                      <input type="text" className="form-control"
                          placeholder="What's on your mind?" 
-                         value={this.props.newHeadLine}    
+                         value={this.state.newHeadLine}    
                          onChange={this.handleChange}                    
                      />
                      <span className="input-group-text" id="basic-addon2">
                          <button className="btn"
                             onClick = {() => {                                
-                                this.props.update(this.props.newHeadLine);
+                                this.updateHeadline()
                             }}>
                              Post
                          </button>
@@ -40,36 +51,4 @@ class Self extends React.Component {
    }
 }
 
-const stateToPropertyMapper = (state) => {    
-    return state.SelfReducer;
-}
-
-const actionToPropertyMapper = (dispatch) => ({
-    getHeadline : () => {
-        UserService.getCurrentUser().then(res => {
-            
-            dispatch({
-                type: "INITIAL",
-                headline: res.headline
-            })
-        })
-    },
-
-    update: (newHeadLine) => { 
-        UserService.updateUserHeadline(1, newHeadLine).then(res => {
-            dispatch({
-                type: "UPDATE_HEADLINE",
-                headline: newHeadLine
-            });
-        })             
-    },
-
-    handleChange: (newHeadLine) => {
-        dispatch({
-            type: "NEW_HEADLINE",
-            headline: newHeadLine
-        });
-    }
-});
-
-export default connect(stateToPropertyMapper, actionToPropertyMapper)(Self);
+export default Self;

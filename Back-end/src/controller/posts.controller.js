@@ -26,5 +26,11 @@ module.exports = function(app) {
     //delete a post
     app.delete('/api/posts/delete', (req,res) => {
         res.json(postsService.deletePost(req.body.id))
-    });    
+    });  
+    
+    //add a new comment to the post
+    //add a comment
+    app.post('/api/posts/:pid/comments/create', (req,res) => {
+        res.json(postsService.addCommentToPost(req.body));
+    });
 }

@@ -6,9 +6,4 @@ module.exports= function(app) {
     app.get('/api/posts/:pid/comments', (req, res) => {
         res.json(commentsService.getAllComments(req.params['pid']));
     });
-
-    //add a comment
-    app.post('/api/posts/:pid/comments/add', (req,res) => {
-        res.json(commentsService.addComment(req.body));
-    });
 }

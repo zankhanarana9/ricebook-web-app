@@ -1,4 +1,5 @@
 
+const commentsService = require('./comments.service');
 let posts = require('./posts.json');
 
 
@@ -42,10 +43,24 @@ addPost = (post) => {
     return post;
 }
 
+//add a comment to a post  
+addCommentToPost = (comment) => {
+    let post = posts.find(post => post.id == comment.postid);
+    comment.id = post.comments+1;
+    commentsService.addComment(comment)
+    posts = posts.map(post => {
+        if(post.id == comment.postid) {
+            post.comments = post.comments+1
+        }
+        return post;
+    });
+    return comment;
+}
 module.exports = {
     getAllPosts,
     getPostById,
     updatePost,
     deletePost,
-    addPost
+    addPost,
+    addCommentToPost
 }

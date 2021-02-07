@@ -1,49 +1,23 @@
 import React from 'react';
 import Comment from './Comment';
 import ArticleService from '../../services/article-service';
+import { connect } from 'react-redux';
 
 class Article extends React.Component {
 
-    constructor(props) {
-      super(props);
-      this.state ={
-        newComment: "",
-        comments: [] 
-      }
-    }
-
-    componentDidMount() {
-      fetch(`http://localhost:4200/api/posts/${this.props.post.id}/comments`)
-        .then(response => response.json())
-        .then(res => {
-          this.setState({
-            comments: res
-          });
-        });
+    componentDidMount() {      
+        this.props.getComments(this.props.post.id);
     }
 
     handleChange = (event) => {
-      this.setState({
-        newComment: event.target.value
-      })
+      this.props.handleChange(event.target.value);
     }
 
     onCommentClick = () => {
-      if(this.state.newComment !== ""
-        && this.state.newComment !== undefined
+      if(this.props.newComment !== ""
+        && this.props.newComment !== undefined
       ) {
-        let newComment ={
-            "postid": this.props.post.id,
-            "id" : (new Date()).getTime(),
-            "userid": 2,
-            "date": new Date(),
-            "body": this.state.newComment,
-            "likes": 0
-        }
-        this.props.addComment(this.props.post,newComment);
-        this.setState({
-          newComment: ""
-        });
+        this.props.addComment(this.props.post, this.props.newComment);
       }
     }  
 
@@ -55,7 +29,7 @@ class Article extends React.Component {
              {/* display an image if the post has imageUrl */}
              <h5 className="card-title">
                 {
-                  ArticleService.getPostUser(this.props.post.id).name
+                  this.props.post.createdBy.username
                 }
             </h5>
              {
@@ -80,7 +54,7 @@ class Article extends React.Component {
                 <div className="input-group mt-1">
                   <input type="text" className="form-control"
                     placeholder="Add a comment" 
-                      value={this.state.newComment}
+                      value={this.props.newComment}
                       onChange={this.handleChange}
                     />
                   <span className="input-group-text">
@@ -93,8 +67,8 @@ class Article extends React.Component {
 
                 {/* display post comments */}                 
                 {
-                  this.state.comments !== undefined && 
-                  this.state.comments.map(comment => 
+                  this.props.comments !== undefined && 
+                  this.props.comments.map(comment => 
                     <Comment
                      key={comment.id} 
                        comment = {comment}
@@ -110,4 +84,35 @@ class Article extends React.Component {
     }
 }
 
-export default Article;
+
+const stateToPropertyMapper =  state => {
+  return state.ArticleReducer
+}
+
+const actionToPropertyMapper = dispatch => ({
+    getComments: (pid) => {
+        ArticleService.getComments(pid)
+        .then(res => dispatch({
+          type: "INITIAL",
+          comments: res
+        }));
+    },
+
+    addComment: (post,comment) => {
+      ArticleService.addComment(post,comment)
+        .then(res => {            
+          dispatch({
+            type: "ADD_NEW_COMMENT",
+            comment: res
+          })
+        })
+    },
+
+    handleChange: (newComment) => {      
+      dispatch({
+        type: "HANDLE_COMMENT_CHANGE",
+        newComment: newComment
+      })
+    },
+})
+export default connect(stateToPropertyMapper, actionToPropertyMapper)(Article);

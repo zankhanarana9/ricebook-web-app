@@ -7,18 +7,6 @@ let comments = ["This is a place holder for comments"]
 
 class ArticleService {
     
-    // static getPosts =  async () => { 
-    //     let posts = await fetch('https://jsonplaceholder.typicode.com/posts/')
-    //         .then(response => response.json());
-    //     posts = posts.slice(0,2);
-    //     await posts.map((post) => {
-    //         return fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
-    //             .then(comments => comments.json())
-    //             .then(comments =>  post.comments =comments)                
-    //     });
-    //     return posts;
-    // }
-    
     static getPosts = () => {
         return fetch('http://localhost:4200/api/posts')
             .then(response => response.json());
@@ -32,11 +20,13 @@ class ArticleService {
         // return UserService.getUserById(userId);                
     }
     
-    static getComments =  (postId) => {
-        fetch(`/api/posts/${postId}/comments`)
-            .then(response => response.json())
-            .then(response => console.log(response));
-        return comments.filter(comment => comment.postId === postId);
+    static getComments =  (pid) => {
+        return fetch(`http://localhost:4200/api/posts/${pid}/comments`)
+        .then(response => response.json())
+        // fetch(`/api/posts/${postId}/comments`)
+        //     .then(response => response.json())
+        //     .then(response => console.log(response));
+        // return comments.filter(comment => comment.postId === postId);
     }
 
     static addPost = (newPost) => {
@@ -45,7 +35,23 @@ class ArticleService {
     }
 
     static addComment(post, newComment) {
-        post.comments.unshift(newComment);
+        let comment = {
+            "id": 5,
+            "body": newComment,
+            "postid": post.id,
+            "createdBy": {
+                "id": 2,
+                "username": "bstark"
+            }
+        }
+
+        return fetch(`http://localhost:4200/api/posts/${post.id}/comments/create`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(comment)
+            }).then(res => res.json());
     }
 
     static likeComment(comment,like) {

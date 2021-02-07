@@ -4,35 +4,43 @@ import ArticleService from '../services/article-service';
 import UserService from '../services/user-service';
 import { withRouter } from 'react-router-dom';
 
-const stateToPropertyMapper = state => {    
+const stateToPropertyMapper = state => {        
     return state.ContentReducer;
 }
 
 const actionToPropertyMapper = dispatch => ({
-    init: async () => {
+    init:  () => {
         let posts = [];
         let user = [];
 
         ArticleService.getPosts()
-            .then(res => posts = res);
+            .then(res => posts = res)
+                .then(res => 
+                UserService.getCurrentUser()
+                .then(res => user = res)  
+                .then(res => {
+                    dispatch({
+                        type: "INITIAL_STATE",
+                        posts: posts,
+                        user: user
+                        // followers: followers,
+                        // friends: friends
+                    });
+                } ) )
         
-        UserService.getCurrentUser()
-            .then(res => user = res)          
-                                                       
-        let headline = await fetch('http://localhost:4200/api/users/1')
-            .then( response => response.json())
-            .then(response => response.headline);
-                
-        dispatch({
-            type: "INITIAL_STATE",
-            posts: posts,
-            headline: headline,
-            user: user
-            // followers: followers,
-            // friends: friends
-        });
+                               
+       
     },  
-        
+    
+    updateHeadline: (newHeadLine) => {         
+        UserService.updateUserHeadline(1, newHeadLine).then(res => {
+            dispatch({
+                type: "UPDATE_HEADLINE",
+                headline: newHeadLine,
+                user: res
+            });
+        })             
+    },
 
     updateFollower: (user, follower) => {       
         UserService.updateFollow(user, follower);       

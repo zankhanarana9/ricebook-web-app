@@ -7,9 +7,10 @@ const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFol
     return( 
         <div className="row mt-3" >
             <div className="col-md-3 d-none d-md-block border ms-3">
-                <div className="row">
+                <div className="row">                
                     <Self 
-                        user = {currentUser}                                                
+                        user = {currentUser}  
+                        updateHeadline= {updateHeadline}                                              
                     />
                 </div>
             </div>

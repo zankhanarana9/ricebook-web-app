@@ -9,7 +9,7 @@ getAllComments = (pid) => {
 //add a new comment
 addComment = (comment) => {
     comments.push(comment);   
-    return comments; 
+    return comment; 
 };
 
 module.exports = {

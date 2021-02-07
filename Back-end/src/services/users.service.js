@@ -17,13 +17,8 @@ updateHeadline = (uid, headline) => {
     let user = users.find(u => u.id == uid);
     if(user != undefined) {
         user.headline = headline;
-    }
-    console.log(user);
-    return {
-        username:  user.username,
-        id: user.id,
-        headline: user.headline
-    };
+    }    
+    return user;
 }
 
 module.exports  = {      

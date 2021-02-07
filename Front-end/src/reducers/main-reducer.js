@@ -1,16 +1,14 @@
 import {combineReducers} from 'redux';
-import ContentReducer from './content-reducer';
+import ContentReducer from './main-page-reducer';
 import UserReducer from './user-reducer';
 import LoginReducer from './login-reducer';
-import PostReducer from './post-reducer';
-import SelfReducer from './self-reducer';
+import ArticleReducer from './article-reducer';
 
 const MainReducer = combineReducers({
     ContentReducer,
     UserReducer,
     LoginReducer,
-    PostReducer,
-    SelfReducer
+    ArticleReducer
 });
 
 export default MainReducer;

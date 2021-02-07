@@ -6,33 +6,30 @@ import MainContent from './main-content-component-js';
 
 class MainPage extends React.Component {    
 
-    componentDidMount () {
-        this.props.init();
+    constructor (props) {
+        super(props)
+        props.init();        
     }
 
     render() {
-
-        return (
-            
+        return (            
             <div>            
                 <NavBar 
                     currentUser={this.props.currentUser}
-                />
-                <div className="container-fluid">
+                />            
+                <div className="container-fluid">                             
                     <MainTop 
                         currentUser = {this.props.currentUser}
                         userHeadline = {this.props.currentUser.headline}
                         followers = {this.props.followers} 
-                        updateHeadline = {this.props.updateHeadLine} 
+                        updateHeadline = {this.props.updateHeadline} 
                         updateFollowers={this.props.updateFollower}
                         addPost={this.props.addPost}                                                                          
-                    />
+                    />                    
                     <MainContent 
-                        currentUser = {this.props.currentUser}
-                        ContentReducer = {this.props.ContentReducer}  
-                        updateFollowers={this.props.updateFollower} 
-                        addComment = {this.props.addComment}       
-                        likeComment={this.props.likeComment}                                      
+                        posts = {this.props.posts}
+                        currentUser = {this.props.currentUser}                        
+                        updateFollowers={this.props.updateFollower}                                                                                         
                     />                                
                     </div>
                 </div>
