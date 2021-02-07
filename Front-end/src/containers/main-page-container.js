@@ -12,24 +12,24 @@ const actionToPropertyMapper = dispatch => ({
     init:  () => {
         let posts = [];
         let user = [];
+        let followers = []
+        let friends = []
 
         ArticleService.getPosts()
             .then(res => posts = res)
-                .then(res => 
-                UserService.getCurrentUser()
-                .then(res => user = res)  
-                .then(res => {
-                    dispatch({
-                        type: "INITIAL_STATE",
-                        posts: posts,
-                        user: user
-                        // followers: followers,
-                        // friends: friends
-                    });
-                } ) )
-        
-                               
-       
+            .then(res =>  UserService.getCurrentUser())
+            .then(res => user = res)  
+            .then(res =>  UserService.getFollowers(user))
+            .then(res => followers = res)
+            .then(res => UserService.getFriendList(user,followers))
+            .then(res => friends = res)
+            .then(res => dispatch({
+                type: "INITIAL_STATE",
+                posts: posts,
+                user: user,
+                followers: followers,
+                friends: friends
+            }))                 
     },  
     
     updateHeadline: (newHeadLine) => {         
@@ -42,13 +42,27 @@ const actionToPropertyMapper = dispatch => ({
         })             
     },
 
-    updateFollower: (user, follower) => {       
-        UserService.updateFollow(user, follower);       
-        dispatch({
-            type:"UPDATE_FOLLOWERS",
-            // followers: UserService.getFollowers(user),
-            // friends: UserService.getFriendList(user)
-        })
+    addFollower: (user, follower) => {
+        UserService.addFollower(user,follower)
+            .then(res => dispatch({
+                type: "ADD_FOLLOWER",
+                followed: res
+            }));
+    },
+
+    removeFollower: (user, follower) => {
+        let followers = []
+        UserService.removeFollower(user, follower)
+            .then(res => {
+                followers = res;
+                UserService.getUserById(follower.user.id)
+                .then(res => dispatch({
+                    type: "REMOVE_FOLLOWER",
+                    followers: followers,
+                    user: res
+                }))
+            })
+            
     },
 
     addPost: (post) => {        

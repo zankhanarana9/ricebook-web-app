@@ -1,5 +1,5 @@
 const userService = require('../services/users.service');
-
+const followerService = require('../services/follower.service')
 module.exports = function(app) {
 
     app.get('/api/users', (req, res) => {
@@ -10,14 +10,24 @@ module.exports = function(app) {
         res.send(userService.findUserById(req.params['uid']));
     });
 
-    app.put('/api/users/:uid/updateHeadline', (req,res) => {
-        console.log(req.body);
+    app.put('/api/users/:uid/updateHeadline', (req,res) => {        
         let user = userService.updateHeadline(req.body.id, req.body.headline);
         return res.json(user);
     });
 
-    app.put('/api/users/:uid/friends/:friendId', (req, res) => {
-        res.send(userService.updateFollow(req.params['uid'], req.params['friendId']));
+    //get list of followers
+    app.get('/api/users/:uid/followers', (req,res) => {
+        res.json(followerService.getAllFollowers(req.params['uid']));
+    });
+
+    //add follower
+    app.post('/api/users/:uid/followers', (req, res) => {
+        res.json(followerService.addFollower(req.body));
+    })
+
+    //delete follower
+    app.delete('/api/users/:uid/followers',(req,res) => {        
+        res.json(followerService.removeFollower(req.body));
     });
 }
 

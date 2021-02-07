@@ -3,7 +3,7 @@ import Self from './self-component-js';
 import AddPost from './add-post-component-js';
 import Followers from './Followers';
 
-const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFollowers, addPost}) => {
+const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFollower, addPost}) => {
     return( 
         <div className="row mt-3" >
             <div className="col-md-3 d-none d-md-block border ms-3">
@@ -22,9 +22,8 @@ const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFol
                 />
             </div> 
             
-            <div className="col-md-3 d-none d-md-block border ms-3" >
-                   
-                {/* {
+            <div className="col-md-3 d-none d-md-block border ms-3" >                                   
+                {
                     followers.length > 0 && 
                     <div className="row m-2 ">
                         <h5 className="mt-1">Following</h5>                     
@@ -33,18 +32,19 @@ const MainTop = ({currentUser, userHeadline, followers, updateHeadline,updateFol
                             followers.map(follower =>{                                    
                                 return (
                                     <Followers 
-                                        key={follower.id.toString()}
+                                        key={follower.user.id.toString()}
+                                        username={follower.user.username}
                                         follower={follower}
-                                        follow={follower.follow}
+                                        follow={true}
                                         currentUser = {currentUser}
-                                        updateFollowers = {updateFollowers}
+                                        updateFollowers = {updateFollower}
                                         display={true}
                                     />
                                 )
                             }) 
                         }
                     </div>  
-                } */}
+                }
                 
             </div>   
         </div>

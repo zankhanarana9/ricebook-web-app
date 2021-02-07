@@ -3,7 +3,6 @@ import Article from './Article';
 import HeadLine from './Headline';
 import Followers from './Followers';
 import { connect } from 'react-redux';
-import ArticleService from '../../services/article-service';
 
 class MainContent extends React.Component {
 
@@ -11,19 +10,21 @@ class MainContent extends React.Component {
         return (
             <div className="row mt-2">
             <div className="col-md-3 d-none d-md-block  ms-3">                                           
-                {/* {
-                    ContentReducer.friends.length > 0 ? 
+                {console.log(this.props.friends)}
+                {
+                    this.props.friends.length > 0 ? 
                     (<div className="row m-2 border">   
                         <h5 className="text-left mt-1">Friends</h5>                     
                     {
-                        ContentReducer.friends.map(friend =>                                    
+                        this.props.friends.map(friend =>                                    
                             <Followers 
                                 key={friend.id.toString()}
+                                username={friend.username}
                                 follower={friend}
-                                follow={friend.follow}
-                                currentUser = {currentUser}
-                                updateFollowers = {updateFollowers}
-                                display={!friend.follow}
+                                follow={false}
+                                currentUser = {this.props.currentUser}
+                                updateFollowers = {this.props.addFollower}
+                                display={true}
                             />
                         )   
                     }                            
@@ -34,16 +35,9 @@ class MainContent extends React.Component {
                             Hurray! You're following all your friends!
                         </h6>
                     </div>
-                }                              */}
+                }                             
             </div>
-            <div className="col-sm-12 col-md-8 d-block ms-3">                
-                    <div className="row">
-                        <div className="col-8">
-                        {/* <HeadLine 
-                            headline = ""
-                            updateHeadLine = {() => alert("I have to update!")}/>     */}
-                        </div>
-                    </div>
+            <div className="col-sm-12 col-md-8 d-block ms-3">                                    
                     <div className="row">
                         <div className="col-8">                                                                 
                             {

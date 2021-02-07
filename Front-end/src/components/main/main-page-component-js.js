@@ -23,13 +23,14 @@ class MainPage extends React.Component {
                         userHeadline = {this.props.currentUser.headline}
                         followers = {this.props.followers} 
                         updateHeadline = {this.props.updateHeadline} 
-                        updateFollowers={this.props.updateFollower}
+                        updateFollower={this.props.removeFollower}
                         addPost={this.props.addPost}                                                                          
                     />                    
                     <MainContent 
                         posts = {this.props.posts}
+                        friends = {this.props.friends}
                         currentUser = {this.props.currentUser}                        
-                        updateFollowers={this.props.updateFollower}                                                                                         
+                        addFollower = {this.props.addFollower}                                                                                     
                     />                                
                     </div>
                 </div>

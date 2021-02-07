@@ -2,10 +2,6 @@ import React from 'react';
 
 class Followers extends React.Component {
 
-   constructor(props) {
-       super(props);                   
-   }
-   
    toggleFollow = () => {       
         this.props.updateFollowers(this.props.currentUser, this.props.follower);        
     }
@@ -15,7 +11,7 @@ class Followers extends React.Component {
             <div className="px-auto mt-3 mb-3">
                <div className="row">
                    <div className="col text-left" style={{textAlign: "left"}}>                   
-                        <button className="btn">{this.props.follower.username}</button>                        
+                        <button className="btn">{this.props.username}</button>                        
                    </div>
                    <div className="col">
                    {                      

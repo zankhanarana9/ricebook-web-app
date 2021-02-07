@@ -37,46 +37,60 @@ class UserService {
             }).then(response => response.json());
     }
 
+    static getUserById = (uid) => {
+        return fetch(`http://localhost:4200/api/users/${uid}`)
+            .then(response => response.json());     
+    }
+
     static getCurrentUser =() => {
         return fetch('http://localhost:4200/api/users/1')
             .then(response => response.json());        
     };
 
-    static getUserById = (userId) => {      
-        // return fetch('http://localhost:4200/api/users/' + userId)
-        //     .then(response => response.json());   
-        
-        return users.find(user => 
-                user.id === userId
-            );        
-    }
-
-    static getFriendList = async (user) => {        
-        let friends =  await fetch(`http://localhost:4200/api/users/${user.id}/friends`)
-            .then(response => response.json());            
-        let friendList = friends.filter(friend => friend.follow === false);            
-        if(friendList.length > 5) {
-            friendList = getRandom(friendList, 5);
-        }    
-        return friendList;
+    static getFriendList = async(user, followers) => {        
+        let users = await this.getUsers();
+        let f = followers.map(follower => follower.user.id);
+        f.push(user.id);
+        users = users.filter(user => !f.includes(user.id));
+        if(users.length > 5) {
+            users = getRandom(users, 5)
+        }
+        return users;
     }
     
-    static getFollowers = async (user) => {
-        let friends =  await fetch(`http://localhost:4200/api/users/${user.id}/friends`)
-            .then(response => response.json());
-        let friendList = friends.filter(friend => friend.follow === true);            
-        if(friendList.length > 5) {
-            friendList = getRandom(friendList, 5);
-        }    
-        return friendList;        
+    static getFollowers = (user) => {
+        return fetch(`http://localhost:4200/api/users/${user.id}/followers`)
+            .then(res => res.json());      
     }
 
-    static updateFollow(user, follower) {
-        console.log(user);
-        return fetch(`http://localhost:4200/api/users/${user.id}/friends/${follower.id}`, {
-            method:'PUT'
+    static addFollower = (user, follow) => {
+        let follower = {
+            user : {
+                id: follow.id,
+                username: follow.username
+            },
+            followerid: user.id
+        }
+
+        return fetch(`http://localhost:4200/api/users/${user.id}/followers`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(follower)
         })
-                .then(response => response.json());        
+            .then(res => res.json())
+    }
+
+    static removeFollower = (user, follower) => {
+        return fetch(`http://localhost:4200/api/users/${user.id}/followers`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(follower)
+        })
+            .then(res => res.json())
     }
 }
 
